@@ -46,11 +46,17 @@ function moveSlide(n){
         moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
         moveSlideAnimClass.forNext="moveLeftNextSlide";
         slideTextAnimClass="slideTextFromTop";
+        clearInterval(timer);
+        timer=null;
+        setTimer();
     }else if(n<slideIndex){
         if(n<0){n=slides.length-1;}
         moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
         moveSlideAnimClass.forNext="moveRightPrevSlide";
         slideTextAnimClass="slideTextFromBottom";
+        clearInterval(timer);
+        timer=null;
+        setTimer();
     }
 
     if(n!=slideIndex){
@@ -79,14 +85,3 @@ function setTimer(){
     },3000);
 }
 setTimer();
-function playPauseSlides() {
-    var playPauseBtn=document.getElementById("playPause");
-    if(timer==null){
-        setTimer();
-        playPauseBtn.style.backgroundPositionY="0px"
-    }else{
-        clearInterval(timer);
-        timer=null;
-        playPauseBtn.style.backgroundPositionY="-33px"
-    }
-}
